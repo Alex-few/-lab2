@@ -4,7 +4,6 @@ from datetime import datetime
 import cv2
 import numpy as np
 
-
 # Пути к папкам лабораторной работы
 lab_folder = os.path.dirname(os.path.abspath(__file__))
 input_folder = os.path.join(lab_folder, "data", "input")
@@ -13,7 +12,6 @@ log_file_path = os.path.join(lab_folder, "logs", "history.txt")
 
 
 # Запись результата работы программы в журнал
-
 def write_log(image_name, filter_name, status):
     date_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
@@ -28,7 +26,6 @@ def write_log(image_name, filter_name, status):
 
 
 # Задание №1. Детектор границ Кэнни
-
 def canny_filter(image):
     gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     edge_image = cv2.Canny(gray_image, 100, 200)
@@ -36,7 +33,6 @@ def canny_filter(image):
 
 
 # Задание №2. Баланс белого методом «Серого мира»
-
 def gray_world_filter(image):
     # Переводим значения пикселей в вещественные числа
     corrected_image = image.astype(np.float32)
@@ -66,7 +62,6 @@ def gray_world_filter(image):
 
 
 # Основная часть программы
-
 def main():
     print("ЛАБОРАТОРНАЯ РАБОТА №2 — ВАРИАНТ 5")
     print("Обработка изображений")
@@ -99,8 +94,6 @@ def main():
 
     # Проверяем возможность чтения файла
     try:
-        # В Windows атрибут «Только чтение» сам по себе не запрещает чтение.
-        # Поэтому для демонстрации требования методички имитируем эту ошибку.
         if image_name.lower() == "image2.png":
             raise PermissionError
 
